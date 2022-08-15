@@ -1,3 +1,5 @@
+
+
 import 'dart:io';
 import 'dart:math';
 
@@ -38,9 +40,9 @@ class ABGame3{
   }
   String playGame(String parsedInputS,String answerS){
     // //假設傳入的string
-    // String answer = "345";
-    // String guess = "438";
-
+    // String answer ="3 4 5";
+    // String guess = "4 3 8";
+               //      0,1,2
     //現在需要以字串取值
     var a1 = answerS[2];  //5
     var a2 = answerS[1];  //4

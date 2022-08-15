@@ -1,30 +1,50 @@
+
+
 import 'dart:io';
 
-
-class BHGame{
-  // String? input;
-  // BHGame(
-  //     this.input
-  //     );
-  // && input[0] != input[1] && input[1] != input[2] && input[2] != input[3] && input[3] != input[4]
-  start(){
-    String? input = stdin.readLineSync();
-    if (input != null && input[0] != "0" ) {
-      int? parsedInput = int.tryParse(input); //tryParse是轉成數字int
-      if (parsedInput != null){
-        var r = blackHoleNumber( parsedInput );
-        while ( r != 6174 ){
-          r = blackHoleNumber(r);
-          print(r);
+class BHGame {
+  String? input;
+  BHGame(
+      this.input
+      );
+  start() {
+    // String? input = stdin.readLineSync();
+    // 5397
+    if( input != null){
+      String? inputI = "$input";
+      if (inputI[0] != "0" &&
+          inputI[0] != inputI[1] &&
+          inputI[0] != inputI[2] &&
+          inputI[0] != inputI[3] &&
+          inputI[1] != inputI[2] &&
+          inputI[1] != inputI[0] &&
+          inputI[1] != inputI[3] &&
+          inputI[2] != inputI[3] &&
+          inputI[2] != inputI[0] &&
+          inputI[2] != inputI[1] &&
+          inputI[3] != inputI[0] &&
+          inputI[3] != inputI[1] &&
+          inputI[3] != inputI[2] )  {
+        int? parsedInput = int.tryParse(inputI);
+        if (parsedInput != null) {
+          var r = blackHoleNumber(parsedInput);
+          while (r != 6174) {
+            r = blackHoleNumber(r);
+            print(r);
+          }
+        } else {
+          print("請輸入純數字");
         }
-      }else{
-        print("請輸入純數字");
+      } else {
+        print("請輸入純數字，並且四位不相同、非 0 開頭的數字");
       }
     }else{
-      print("請輸入有效字");
+      print("Lau Only");
     }
+
   }
-  int getUnit( int value ){
+
+  int getUnit(int value) {
     double t1 = value / 10;
     int v1 = value - t1.toInt() * 10;
     return v1;
@@ -61,14 +81,9 @@ class BHGame{
     int sumAll = maxSum - sum;
     return sumAll;
   }
-
-
 }
 
-
-
-
 void main() {
-  BHGame bhGame = BHGame();
+  BHGame bhGame = BHGame(stdin.readLineSync());
   bhGame.start();
 }
