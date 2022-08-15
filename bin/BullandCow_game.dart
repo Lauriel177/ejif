@@ -10,6 +10,7 @@ class ABGame3{
       this.maxTimes
       );
   start(){
+
     for ( int i = 0; i < maxTimes; i++) {
       String? input = stdin.readLineSync();
       if (input != null && input[0] != "0" ) {
