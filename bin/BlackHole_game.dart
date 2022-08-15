@@ -9,9 +9,9 @@ class BHGame {
       );
   start() {
     // String? input = stdin.readLineSync();
-    // 5397
     if( input != null){
       String? inputI = "$input";
+      //請問以下可判斷式有方式能夠精簡嗎？
       if (inputI[0] != "0" &&
           inputI[0] != inputI[1] &&
           inputI[0] != inputI[2] &&
@@ -28,6 +28,7 @@ class BHGame {
         int? parsedInput = int.tryParse(inputI);
         if (parsedInput != null) {
           var r = blackHoleNumber(parsedInput);
+          print(r);
           while (r != 6174) {
             r = blackHoleNumber(r);
             print(r);
