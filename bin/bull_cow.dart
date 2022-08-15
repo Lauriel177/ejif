@@ -20,7 +20,7 @@ class ABGame3{
           String answerS = "$answer";
           var r = playGame( parsedInputS, answerS );
           //在同個class中可直接使用自己的function
-          if( r == "Win" ){
+          if( r == "Yes" ){
             break;
           }
           print(r);
