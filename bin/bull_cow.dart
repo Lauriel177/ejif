@@ -21,6 +21,7 @@ class ABGame3{
           var r = playGame( parsedInputS, answerS );
           //在同個class中可直接使用自己的function
           if( r == "Yes" ){
+            print(r);
             break;
           }
           print(r);
