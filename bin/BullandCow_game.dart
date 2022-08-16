@@ -5,10 +5,16 @@ import 'dart:math';
 
 class ABGame3{
   //default
-  int answer;
+  final int _answer;
   int maxTimes;
+  // int get_answer(){
+  //   return _answer;
+  // }
+  // void set_answer(int newValue){
+  //   _answer = newValue;
+  // }
   ABGame3(
-      this.answer,
+      this._answer,
       this.maxTimes
       );
   start(){
@@ -20,7 +26,7 @@ class ABGame3{
 
         if (parsedInput != null){
           String parsedInputS = "$parsedInput";
-          String answerS = "$answer";
+          String answerS = "$_answer";
           var r = playGame( parsedInputS, answerS );
           //在同個class中可直接使用自己的function
           if( r == "Yes" ){
@@ -98,10 +104,14 @@ class ABGame3{
       return("Yes");
     }
 
-    return("$a A $b B $answerS");
+    return("$a A $b B $_answer");
   //  先return答案確保演算法無誤
 
 
+
+  }
+  void _privateMethod(){
+    print("Hello private abgame");
 
   }
 }
@@ -109,6 +119,8 @@ class ABGame3{
 void main(){
   ABGame3 abGame = ABGame3(Random().nextInt(1000), 7);
   abGame.start();
+  print(abGame._answer);
+  abGame._privateMethod();
 }
 
 
