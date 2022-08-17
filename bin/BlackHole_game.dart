@@ -1,31 +1,28 @@
-
-
 import 'dart:io';
 
 class BHGame {
   String? input;
-  BHGame(
-      this.input
-      );
+  BHGame(this.input);
+
   start() {
-    // String? input = stdin.readLineSync();
-    if( input != null){
-      String? inputI = "$input";
-      //請問以下可判斷式有方式能夠精簡嗎？
-      if (inputI[0] != "0" &&
-          inputI[0] != inputI[1] &&
-          inputI[0] != inputI[2] &&
-          inputI[0] != inputI[3] &&
-          inputI[1] != inputI[2] &&
-          inputI[1] != inputI[0] &&
-          inputI[1] != inputI[3] &&
-          inputI[2] != inputI[3] &&
-          inputI[2] != inputI[0] &&
-          inputI[2] != inputI[1] &&
-          inputI[3] != inputI[0] &&
-          inputI[3] != inputI[1] &&
-          inputI[3] != inputI[2] )  {
-        int? parsedInput = int.tryParse(inputI);
+    if (input != null) {
+      String? inputS = "$input";
+      int rr = condition(inputS);
+      if (inputS[0] != "0" && rr != 0
+          // inputS[0] != inputS[1] &&
+          // inputS[0] != inputS[2] &&
+          // inputS[0] != inputS[3] &&
+          // inputS[1] != inputS[2] &&
+          // inputS[1] != inputS[0] &&
+          // inputS[1] != inputS[3] &&
+          // inputS[2] != inputS[3] &&
+          // inputS[2] != inputS[0] &&
+          // inputS[2] != inputS[1] &&
+          // inputS[3] != inputS[0] &&
+          // inputS[3] != inputS[1] &&
+          // inputS[3] != inputS[2]
+          ) {
+        int? parsedInput = int.tryParse(inputS);
         if (parsedInput != null) {
           var r = blackHoleNumber(parsedInput);
           print(r);
@@ -39,10 +36,9 @@ class BHGame {
       } else {
         print("請輸入純數字，並且四位不相同、非 0 開頭的數字");
       }
-    }else{
+    } else {
       print("Lau Only");
     }
-
   }
 
   int getUnit(int value) {
@@ -81,6 +77,29 @@ class BHGame {
 
     int sumAll = maxSum - sum;
     return sumAll;
+  }
+
+  condition(String input) {
+    int countI = 0;
+
+    for (int i = 1; i < 4; i++) {
+      if (input[0] == input[i]) {
+        countI = countI + 1;
+        if (countI == 3) {
+          return 0;
+        }
+      } else {
+        for (int j = 0; j < input.length; j++) {
+          for (int k = j + 1; k < input.length; k++) {
+            if (input[j] == input[k]) {
+              return 0;
+            }else{
+              return 1;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
